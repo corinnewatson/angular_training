@@ -1,0 +1,38 @@
+
+
+<form [formGroup] = "CustomerModel.formCustomerGroup">
+Customer Code: <input formControlName = "CustomerCodeControl" [(ngModel)] = "CustomerModel.CustomerCode" type = text/><br>
+Customer Name: <input formControlName = "CustomerNameControl" [(ngModel)] = "CustomerModel.CustomerName" type = text/><br>
+Customer Amount: <input [(ngModel)] = "CustomerModel.CustomerAmount" [ngModelOptions]="{standalone: true}" type = text/><br>
+ <input [disabled] ="!(CustomerModel.formCustomerGroup.valid)" (click) = "Add()" type = button value = "Add"/>
+</form>
+{{CustomerModel.CustomerCode}}<br/>
+{{CustomerModel.CustomerAmount}}<br/>
+{{CustomerModel.CustomerName}}<br/>
+
+<div *ngIf= "CustomerModel.formCustomerGroup.dirty" [hidden] = "CustomerModel.formCustomerGroup.controls['CustomerCodeControl'].hasError('pattern')"> Customer code is not formatted properly </div>
+<div *ngIf= "CustomerModel.formCustomerGroup.dirty" [hidden] = "CustomerModel.formCustomerGroup.controls['CustomerCodeControl'].hasError('required')"> Customer code is required </div>
+<div [hidden] = "CustomerModel.formCustomerGroup.controls['CustomerNameControl'].hasError('required')"> Customer name is required </div>
+
+
+<!-- <grid-ui gridColumns="" gridData="CustomerModels"></grid-ui> -->
+
+
+
+
+<!-- <table>
+
+    <tr>
+        <td> Customer Code </td>
+        <td> Customer Name </td>
+        <td> Customer Amount </td>
+    </tr>
+
+    <tr *ngFor="let cust of CustomerModels">
+        <td>{{cust.CustomerCode}}</td>
+        <td>{{cust.CustomerName}}</td>
+        <td>{{cust.CustomerAmount}}</td>
+    </tr>
+
+
+</table> -->
